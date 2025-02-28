@@ -1,4 +1,4 @@
-import { MutableRefObject, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { noop } from "../utils/misc";
 
 interface NuiMessageData<T = unknown> {
@@ -8,8 +8,8 @@ interface NuiMessageData<T = unknown> {
 
 type NuiHandlerSignature<T> = (payload: T) => void;
 
-export const postMessage = <T = unknown>(name: string,handler: (payload: T) => void) => {
-  const savedHandler: MutableRefObject<NuiHandlerSignature<T>> = useRef(noop);
+export const postMessage = <T = unknown>(name: string, handler: NuiHandlerSignature<T>) => {
+  const savedHandler = useRef<NuiHandlerSignature<T>>(noop);
 
   useEffect(() => {
     savedHandler.current = handler;
@@ -27,6 +27,7 @@ export const postMessage = <T = unknown>(name: string,handler: (payload: T) => v
     };
 
     window.addEventListener("message", eventListener);
+
     return () => window.removeEventListener("message", eventListener);
   }, [name]);
 };
