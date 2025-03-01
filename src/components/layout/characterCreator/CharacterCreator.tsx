@@ -1,18 +1,12 @@
 import { useState } from "react";
 import { useVisibility } from "../../../providers/Visibility";
+import { Character } from "../../../interface/CharacterCreatorInterfaces"
+
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
-interface Character {
-  nome: string;
-  sobrenome: string;
-  idade: number;
-  genero: "feminino" | "masculino";
-  parentesco: "mae" | "pai";
-  semelhanca: number;
-}
 
 export default function CharacterCreator() {
   const { adicionarPersonagem, personagens } = useVisibility();
