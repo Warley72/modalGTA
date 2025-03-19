@@ -7,7 +7,6 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 
-
 export default function CharacterCreator() {
   const { adicionarPersonagem, personagens } = useVisibility();
 
@@ -15,7 +14,7 @@ export default function CharacterCreator() {
   const [sobrenome, setSobrenome] = useState("");
   const [idade, setIdade] = useState<number>(0);
   const [genero, setGenero] = useState<"feminino" | "masculino">("feminino");
-  const [parentesco, setParentesco] = useState<"mae" | "pai">("mae");
+  const [parentesco, setParentesco] = useState<"mae" | "pai" | "">("");
   const [semelhanca, setSemelhanca] = useState<number>(50);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -30,7 +29,7 @@ export default function CharacterCreator() {
     adicionarPersonagem(payload);
     window.postMessage({ name: "Visible", payload }, "*");
     
-    console.log("🔹 Personagem criado:", payload);
+    console.log(" Personagem criado:", payload);
   };
 
   return (

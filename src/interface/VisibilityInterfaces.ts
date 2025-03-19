@@ -3,7 +3,7 @@ export interface Character {
     sobrenome: string;
     idade: number;
     genero: "feminino" | "masculino";
-    parentesco: "mae" | "pai";
+    parentesco: "mae" | "pai" | "";
     semelhanca: number;
   }
   
